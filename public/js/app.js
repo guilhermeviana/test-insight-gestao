@@ -2011,7 +2011,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      funcionario: {}
+    };
+  },
+  methods: {
+    //por falta de tempo :/ (dava para reutilizar o mesmo metodo do gridFuncionarios)
+    addOrUpdateFuncionario: function addOrUpdateFuncionario(funcionario) {
+      var _this = this;
+
+      axios.post("http://localhost:8000/api/funcionarios/create", funcionario).then(function (response) {
+        location.href = '/crud';
+      })["catch"](function (error) {
+        return console.log(error);
+      })["finally"](function () {
+        return _this.loading = false;
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    axios.get("http://localhost:8000/api/funcionarios/edit/".concat(this.$route.params.id)).then(function (response) {
+      _this2.funcionario = response.data;
+    });
+  }
+});
 
 /***/ }),
 
@@ -2144,6 +2212,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -20595,16 +20664,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container mt-5" }, [
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "formGroupExampleInput" } }, [
+          _vm._v("Nome")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.funcionario.nome,
+              expression: "funcionario.nome"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", id: "nome", name: "nome" },
+          domProps: { value: _vm.funcionario.nome },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.funcionario, "nome", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "cargo" } }, [_vm._v("Cargo")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.funcionario.cargo,
+              expression: "funcionario.cargo"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "cargo", id: "cargo" },
+          domProps: { value: _vm.funcionario.cargo },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.funcionario, "cargo", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "salario" } }, [_vm._v("Salário")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.funcionario.salario,
+              expression: "funcionario.salario"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "number", name: "salario", id: "salario" },
+          domProps: { value: _vm.funcionario.salario },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.funcionario, "salario", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row text-right mt-4" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  $event.stopPropagation()
+                  return _vm.addOrUpdateFuncionario(_vm.funcionario)
+                }
+              }
+            },
+            [_vm._v("\n          Salvar\n        ")]
+          )
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("SSSS")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20635,23 +20798,29 @@ var render = function() {
           "div",
           { staticClass: "row justify-content-center m-3" },
           [
-            _c("router-link", { attrs: { tag: "", to: "/crud" } }, [
-              _c("button", { staticClass: "btn btn-outline-secondary mr-3" }, [
-                _vm._v("CRUD")
-              ])
-            ]),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-outline-secondary mr-3",
+                attrs: {
+                  to: {
+                    name: "crud",
+                    props: { acoes: false, funcionarios: {} }
+                  },
+                  tag: "button",
+                  to: "/crud"
+                }
+              },
+              [_vm._v("CRUD")]
+            ),
             _vm._v(" "),
             _c(
               "router-link",
               {
-                staticStyle: { "list-style": "none" },
-                attrs: { tag: "", to: "/form" }
+                staticClass: "btn btn-outline-secondary mr-3",
+                attrs: { tag: "button", to: "/todolist" }
               },
-              [
-                _c("button", { staticClass: "btn btn-outline-secondary" }, [
-                  _vm._v("TO DO LIST")
-                ])
-              ]
+              [_vm._v("TO DO LIST")]
             )
           ],
           1
@@ -20924,7 +21093,13 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-sm btn-info",
-                                attrs: { tag: "button", to: "/funcionario" }
+                                attrs: {
+                                  tag: "button",
+                                  to: {
+                                    name: "funcionario",
+                                    params: { id: funcionario.id }
+                                  }
+                                }
                               },
                               [_vm._v("\n              Editar\n            ")]
                             )
@@ -36563,7 +36738,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Home */ "./resources/components/Home.vue");
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Home */ "./resources/components/Home.vue");
 /* harmony import */ var _js_routes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/routes.js */ "./resources/js/routes.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -36575,7 +36750,7 @@ var app = new Vue({
   el: '#app',
   router: _js_routes_js__WEBPACK_IMPORTED_MODULE_2__["default"],
   render: function render(h) {
-    return h(_components_Home__WEBPACK_IMPORTED_MODULE_3__["default"]);
+    return h(_components_Home__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 });
 
@@ -36649,7 +36824,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'todolist',
     component: _components_App__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/funcionario/create',
+    path: '/funcionario/:id',
     name: 'funcionario',
     component: _components_CRUD_FormUsuario__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
@@ -36676,8 +36851,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\glalves\Desktop\test-insight-gestao\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\glalves\Desktop\test-insight-gestao\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Guilherme\Desktop\test-insight-gestao\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Guilherme\Desktop\test-insight-gestao\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -23,9 +23,9 @@ const router = new VueRouter({
             component: App
         }, 
         {
-            path: '/funcionario/create',
+            path: '/funcionario/:id',
             name: 'funcionario',
-            component: FormUsuario
+            component: FormUsuario,
         },       
         
     ]

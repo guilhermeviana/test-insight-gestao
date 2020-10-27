@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/funcionarios', 'FuncionarioController@index')->name('funcionario.index');
+Route::get('/funcionarios/edit/{id}', 'FuncionarioController@edit')->name('funcionario.edit');
 Route::post('/funcionarios/create', 'FuncionarioController@store')->name('funcionario.store');
 Route::delete('/funcionarios/destroy/{id}', 'FuncionarioController@destroy')->name('funcionario.destroy');

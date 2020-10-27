@@ -2,11 +2,11 @@
   <div class="container">
     <div class="text-center">
       <div class="row justify-content-center m-3">
-        <router-link tag="" to="/crud" 
-          ><button class="btn btn-outline-secondary mr-3">CRUD</button></router-link
+        <router-link  :to="{ name: 'crud', props: { acoes: false, funcionarios: {} }}" class="btn btn-outline-secondary mr-3" tag="button" to="/crud" 
+          >CRUD</router-link
         >
-        <router-link tag="" to="/form" style="list-style: none"
-          ><button class="btn btn-outline-secondary">TO DO LIST</button></router-link
+        <router-link class="btn btn-outline-secondary mr-3" tag="button" to="/todolist"
+          >TO DO LIST</router-link
         >
       </div>
     </div>

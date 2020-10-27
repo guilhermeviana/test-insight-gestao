@@ -47,7 +47,8 @@
               <router-link
                 class="btn btn-sm btn-info"
                 tag="button"
-                to="/funcionario"
+                :to="{ name: 'funcionario', params: { id: funcionario.id }}"
+                
               >
                 Editar
               </router-link>
