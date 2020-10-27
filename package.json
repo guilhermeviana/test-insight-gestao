@@ -1,10 +1,10 @@
 {
     "private": true,
-    "name": "myapp",
+    "name": "meu app",
     "description": "a really cool app",
     "version": "1.0.0",
     "engines": {
-        "node": "12.x"
+        "node": "12.16"
     },
     "scripts": {
         "dev": "npm run development",
