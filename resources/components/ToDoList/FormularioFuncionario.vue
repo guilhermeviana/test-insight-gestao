@@ -41,7 +41,7 @@
         </div>
         <button
           :disabled="disabled"
-          @click.prevent.stop="addFuncionario()"
+          @click.prevent.stop="$emit('addOrUpdateFuncionario', funcionario)"
           class="btn btn-success mx-sm-3 mb-2"
         >
           Salvar
@@ -53,17 +53,17 @@
 
 <script>
 export default {
+  props: {
+    funcionario: {
+      Object,
+      required: true
+    }
+  },
   data() {
     return {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content"),
-      funcionario: {
-        id: null,
-        nome: "",
-        salario: 0,
-        cargo: "",
-      },
+        .getAttribute("content"),      
       disabled: true,
     };
   },
@@ -71,28 +71,14 @@ export default {
   watch: {
     funcionario: {
       handler(atual) {
-        console.log(atual);
         if (atual.nome != "" && atual.salario > 0 && atual.cargo != "") {
           this.disabled = false;
-        }else{
-            this.disabled = true;
+        } else {
+          this.disabled = true;
         }
       },
-      deep: true
+      deep: true,
     },
-  },
-
-  methods: {
-    addFuncionario() {
-      axios
-        .post("http://localhost:8000/api/funcionarios/create", this.funcionario)
-        .then((response) =>
-          // this.$router.push({name: 'home'})
-          console.log(response.data)
-        )
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
-    }    
   },
 };
 </script>

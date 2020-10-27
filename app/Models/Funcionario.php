@@ -11,5 +11,5 @@ class Funcionario extends Model
     public $incrementing = true;
     public $timestamps = false;
 
-    protected $fillable = ['nome', 'cargo', 'salari'];
+    protected $fillable = ['nome', 'cargo', 'salario'];
 }

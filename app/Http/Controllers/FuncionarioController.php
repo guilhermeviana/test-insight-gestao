@@ -15,17 +15,7 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        /*create database db_test_insight_gestao;
-        use db_test_insight_gestao;
-
-        create table funcionarios(
-            id int primary key auto_increment,
-            nome varchar(100),
-            salario numeric(8,2),
-            cargo varchar (50)    
-        );*/
-        
+    {     
         $funcionarios = Funcionario::all();
         return response()->json($funcionarios);
     }
@@ -40,23 +30,14 @@ class FuncionarioController extends Controller
     public function store(FuncionarioRequest $request)
     {
         try{
-            $funcionario = Funcionario::create($request->all());
-            return response()->json(['data' => 'success', 'message'=> 'Funcionário criado com sucesso.']);
+            $funcionario = Funcionario::updateOrCreate(
+                ['id' => $request->id],
+                ['nome' => $request->nome, 'salario' => $request->salario, 'cargo' => $request->cargo]
+            );
+            return response()->json(['data' => 'success', 'message'=> 'Solicitação realizada com sucesso.']);
         }catch(Exception $e){
             return response()->json($e->getMessage());
         } 
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
