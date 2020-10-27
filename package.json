@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "meu app",
+    "name": "meuapp",
     "description": "a really cool app",
     "version": "1.0.0",
     "engines": {
