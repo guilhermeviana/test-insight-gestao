@@ -1964,7 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
     addOrUpdateFuncionario: function addOrUpdateFuncionario(funcionario) {
       var _this2 = this;
 
-      axios.post("https://test-insight-gestao.herokuapp.com/funcionarios/create", funcionario).then(function (response) {
+      axios.post("https://test-insight-gestao.herokuapp.com/api/funcionarios/create", funcionario).then(function (response) {
         _this2.refreshFuncionarios(0);
 
         _this2.resetFuncionario();
@@ -1977,7 +1977,7 @@ __webpack_require__.r(__webpack_exports__);
     delFuncionario: function delFuncionario(id) {
       var _this3 = this;
 
-      axios["delete"]("https://test-insight-gestao.herokuapp.com/funcionarios/destroy/".concat(id)).then(function (response) {
+      axios["delete"]("https://test-insight-gestao.herokuapp.com/api/funcionarios/destroy/".concat(id)).then(function (response) {
         var i = _this3.funcionarios.map(function (item) {
           return item.id;
         }).indexOf(id);
@@ -2063,7 +2063,7 @@ __webpack_require__.r(__webpack_exports__);
     addOrUpdateFuncionario: function addOrUpdateFuncionario(funcionario) {
       var _this = this;
 
-      axios.post("http://localhost:8000/api/funcionarios/create", funcionario).then(function (response) {
+      axios.post("https://test-insight-gestao.herokuapp.com/api/funcionarios/create", funcionario).then(function (response) {
         location.href = '/crud';
       })["catch"](function (error) {
         return console.log(error);
@@ -2075,7 +2075,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    axios.get("http://localhost:8000/api/funcionarios/edit/".concat(this.$route.params.id)).then(function (response) {
+    axios.get("https://test-insight-gestao.herokuapp.com/api/funcionarios/edit/".concat(this.$route.params.id)).then(function (response) {
       _this2.funcionario = response.data;
     });
   }
@@ -2287,7 +2287,7 @@ __webpack_require__.r(__webpack_exports__);
     refreshFuncionarios: function refreshFuncionarios() {
       var _this = this;
 
-      axios.get("http://localhost:8000/api/funcionarios").then(function (response) {
+      axios.get("https://test-insight-gestao.herokuapp.com/api/funcionarios").then(function (response) {
         _this.funcionarios = response.data;
 
         _this.resetFuncionario();
@@ -2296,7 +2296,7 @@ __webpack_require__.r(__webpack_exports__);
     addOrUpdateFuncionario: function addOrUpdateFuncionario(funcionario) {
       var _this2 = this;
 
-      axios.post("http://localhost:8000/api/funcionarios/create", funcionario).then(function (response) {
+      axios.post("https://test-insight-gestao.herokuapp.com/api/funcionarios/create", funcionario).then(function (response) {
         _this2.refreshFuncionarios(0);
 
         _this2.resetFuncionario();
@@ -2309,7 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
     delFuncionario: function delFuncionario(id) {
       var _this3 = this;
 
-      axios["delete"]("http://localhost:8000/api/funcionarios/destroy/".concat(id)).then(function (response) {
+      axios["delete"]("https://test-insight-gestao.herokuapp.com/api/funcionarios/destroy/".concat(id)).then(function (response) {
         var i = _this3.funcionarios.map(function (item) {
           return item.id;
         }).indexOf(id);
