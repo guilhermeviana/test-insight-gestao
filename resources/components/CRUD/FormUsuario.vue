@@ -54,7 +54,7 @@ export default {
     //por falta de tempo :/ (dava para reutilizar o mesmo metodo do gridFuncionarios)
     addOrUpdateFuncionario(funcionario) {
       axios
-        .post("http://localhost:8000/api/funcionarios/create", funcionario)
+        .post("https://test-insight-gestao.herokuapp.com/api/funcionarios/create", funcionario)
         .then((response) => {
           location.href = '/crud';
         })
@@ -64,7 +64,7 @@ export default {
   },
   created() {
     axios.get(
-        `http://localhost:8000/api/funcionarios/edit/${this.$route.params.id}`
+        `https://test-insight-gestao.herokuapp.com/api/funcionarios/edit/${this.$route.params.id}`
       )
       .then((response) => {
         this.funcionario = response.data;

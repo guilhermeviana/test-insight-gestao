@@ -43,14 +43,14 @@ export default {
         };
     },
     refreshFuncionarios(){
-      axios.get("http://localhost:8000/api/funcionarios").then((response) => {
+      axios.get("https://test-insight-gestao.herokuapp.com/api/funcionarios").then((response) => {
        this.funcionarios = response.data;
        this.resetFuncionario();
     });
     },
     addOrUpdateFuncionario(funcionario) {      
       axios
-        .post("http://localhost:8000/api/funcionarios/create", funcionario)
+        .post("https://test-insight-gestao.herokuapp.com/api/funcionarios/create", funcionario)
         .then((response) => {
           this.refreshFuncionarios(0);
           this.resetFuncionario();
@@ -61,7 +61,7 @@ export default {
 
     delFuncionario(id) {
       axios
-        .delete(`http://localhost:8000/api/funcionarios/destroy/${id}`)
+        .delete(`https://test-insight-gestao.herokuapp.com/api/funcionarios/destroy/${id}`)
         .then((response) => {
           let i = this.funcionarios.map((item) => item.id).indexOf(id);
           this.funcionarios.splice(i, 1);
